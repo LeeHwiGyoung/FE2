@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 모달 실습</title>
+  </head>
+  <body>
+    <article>
+        <h2>로그인 또는 회원가입</h2>
+        <button type="button" name="close_modal_btn">X</button>
+        <hr/>
+        <p>위니브에서 여러분의 궁금증을 해결하세요! : &#41;</p>
+        <form action="post">
+            <input type="email" name="user_id" id="user_id" placeholder="아이디"/>
+            <br/>
+            <input type="password" name="user_pw" id="user_pw" placeholder="비밀번호">
+            <br/>
+            <input type="checkbox" name="keep_login" id="keep_login">
+            <label for="keep_login">로그인 상태 유지</label>
+            <br/>
+            <input type="submit" value="로그인">
+        </form>
+        <ul>
+            <li><a href="#">회원가입</a></li> 
+            <li><a href="#">아이디/비밀번호 찾기</a></li>
+        </ul>
+        <hr/>
+        <button type="button" name="google_login_btn">구글 계정으로 로그인</button>
+        <br/>
+        <button type="button" name="facebook_login_btn">페이스북 계정으로 로그인</button>
+        <br/>
+        <button type="button" name="naver_login_btn">네이버 계정으로 로그인</button>
+        <br/>
+        <button type="button" name="kakao_login_btn">카카오 계정으로 로그인</button>
+    </article>
+  </body>
+</html>
