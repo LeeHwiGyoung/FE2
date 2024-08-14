@@ -1,0 +1,14 @@
+section {
+    color: red;
+    border: 1px solid salmon;
+}
+
+/* 상속은 명시된 속성값보다 우선순위 낮음 */
+p {
+    color: black;
+}
+
+h1,
+h2 {
+    border: inherit;
+}
