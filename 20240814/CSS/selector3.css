@@ -1,0 +1,31 @@
+/* 자손 선택자 === 공백 
+공백으로 구분하며 자손을 선택한다
+ex ) section 의 자손 p를 선택하여 스타일을 적용
+*/
+section p { 
+    font-size: 32px;
+}
+
+/* 자식 선택자 >
+특정 요소의 직계 자식 요소만 선택
+*/
+
+section > p {
+    color : aqua;
+}
+
+/* 
+일반 형제 선택자 ~
+ */
+
+ section ~ p {
+    background-color: beige;
+ }
+
+ /* 인접 형제 선택자 +
+  바로 뒤에 있는 형제만 선택이 됨
+ */
+
+ section + p {
+    color : hotpink;
+ }
