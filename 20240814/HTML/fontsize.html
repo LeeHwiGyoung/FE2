@@ -3,16 +3,40 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>font</title>
-    <link rel="stylesheet" href="../CSS/font.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
+    <title>font-size</title>
+    <style>
+        p {
+            /* 절대 단위 */
+            font-size : 16px;
+            /* 상대 단위 */
+            font-size : 2rem;
+            font-size : 1.5em;
+            /* 폰트의 굵기 */
+            font-weight: bold;
+            font-weight: 900;
+             /* 기본 값은 none, 단어의 첫문자만 대문자 */
+            text-transform: capitalize;
+            /* 모든 문자가 대문자 */
+            text-transform: uppercase;
+            /* 모든 문자가 소문자 */
+            text-transform: lowercase;
+        }
+
+        .deco { 
+            /* text-decoration-color: blue;
+            text-decoration-line: overline underline; 
+            text-decoration-style: dashed; 
+            text-decoration-thickness: 5px;; */
+            text-decoration: blue overline underline dashed 5px;
+            /* 가로거리, 세로거리, 번짐정도, 색상 */
+            text-shadow: 20px 20px 2px rgba(0,0,255,0.3);
+        }
+    </style>  
   </head>
   <body>
-    <h1>안녕하세요.</h1>
-    <h2>안녕하세요.</h2>
-    <h3>안녕하세요.</h3>
-
+    <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem, quaerat odio reiciendis soluta provident commodi doloremque nesciunt voluptas iure dicta sunt consequuntur. Accusamus iure saepe unde architecto impedit. Unde, ex.
+    </p>
+    <p class="deco">EST 프론트엔드 양성과정 2기 여러분 안녕하세요!</p>
   </body>
 </html>
