@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'Pretendard-Regular';
+    font-family: 'Pretendard';
     src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
@@ -10,6 +10,7 @@
     padding : 0;
     box-sizing: border-box;
 }
+
 .sr-only {
     position: absolute;
     left: -9999px;
@@ -32,18 +33,19 @@
 }
 
 .header {
+    background: #FFFFFF;
+    border-bottom: 1px solid #EEEEEE; 
     display: flex;
     margin: 0 auto;   
     width : 1224px;
     height : 120px;
     align-items: center;
     justify-content: space-between;
-
 }
 
 .logo {
     width: 187px;
-    height : 69px;
+    height : 75px;
 }
 
 .ul-user-info {
@@ -100,10 +102,10 @@
 }
 
 .btn-logout__img {
-    width : 19.41px;
-    height: 18px;
-    padding : 7px 0px 0px 7px;
-    vertical-align: bottom;
+    width : 32px;
+    height: 32px;
+    padding : 7px 6.2px 7px 6.2px;
+    vertical-align: middle;
 }
 
 main {
@@ -113,8 +115,7 @@ main {
 }
 
 .diary-form-container {
-    flex-basis: 563px;
-    margin-top :56px;
+    margin : 56px 39px 0px 0px;
 }
 
 .diary-date {
@@ -171,5 +172,81 @@ main {
 }
 
 .diary-list-container {
-    flex-basis: 875px;
+    margin : 78px 108px 66px 39px;
+}
+.diary-list-container:last-child {
+    margin-bottom: 0px;
+}
+.diary-item {
+    position: relative;
+    margin-bottom: 40px;
+    width: 728px;
+    padding: 8px 0px 6px 0px;
+    border: 1px solid #677880;
+    border-top :4px solid #677880;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19.6px;
+    text-align: justify;
+}
+
+.diary-item::before {
+    content: "";
+    width: 100%;
+    position: absolute;
+    top : 4px;
+    border-bottom: 2px solid #677880;
+}
+
+.open-quotation-mark {
+    position: absolute;
+    background: #FFFAF0;
+    width: 80px;
+    height: 40px;
+    left : 30px;
+    top : -27px;
+}
+
+.close-quotation-mark {
+    position: absolute;
+    background: #FFFAF0;
+    width: 80px;
+    height: 40px;
+    right : 30px;
+    bottom : -17px;
+}
+
+.diary-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 64px 48px 0px 48px;
+}
+
+.diary-item-title {
+    font-family: Pretendard;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19.2px;
+    text-align: left;
+}
+
+.diary-item-date {
+    font-family: Pretendard;
+    font-size: 12px;
+    line-height: 14.4px;
+    text-align: center;
+    color : #677880;
+
+}
+
+.diary-item-content {
+    width: 100%;
+    color: #5A6A72;
+    padding : 12px 48px 12px 48px ;
+}
+.diary-item-footer {
+    width : 100%;
+    height : 64px;
 }
