@@ -13,8 +13,6 @@
 }
 
 
-
-
 .sr-only {
     position: absolute;
     left: -9999px;
@@ -52,7 +50,7 @@
     height : 75px;
 }
 
-.a-login {
+.a-join {
     color : #5A6A72;
     font-family: Pretendard;
     font-size: 14px;
