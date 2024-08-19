@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>virtual-child</title>
+    <style>
+      /* 첫번째 요소를 선택 */
+      li:first-child {
+        color: red;
+      }
+      /* 마지막 요소 선택 */
+      li:last-child {
+        color: aqua;
+      }
+      /* 정수를 사용해 특정 요소 선택 */
+      li:nth-child(3) {
+        font-weight: bold;
+      }
+      /* 홀수 요소 선택 */
+      li:nth-child(odd) {
+        background-color: violet;
+      }
+      /* 짝수 요소 선택 */
+      li:nth-child(even) {
+        background-color: antiquewhite;
+      }
+      /* 짝수 */
+      li:nth-child(2n) {
+        text-align: center;
+      }
+      /* 홀수 */
+      li:nth-child(2n + 1) {
+        text-align: end;
+      }
+      /* 음수 값을 이용한 세 개 선택 */
+      li:nth-child(-n + 3) {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>리스트</li>
+      <li>리스트</li>
+      <li>리스트</li>
+      <li>리스트</li>
+      <li>리스트</li>
+      <li>리스트</li>
+      <li>리스트</li>
+      <li>리스트</li>
+      <li>리스트</li>
+      <li>리스트</li>
+    </ul>
+  </body>
+</html>
