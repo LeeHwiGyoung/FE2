@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>border</title>
+    <style>
+      div {
+        background-color: blueviolet;
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+      }
+      .type1 {
+        border-radius: 50%;
+      }
+      .type2 {
+        border-radius: 5px;
+      }
+      .type3 {
+        border-radius: 100% 0 0 0;
+      }
+      .type4 {
+        border-radius: 100% 0 100%;
+      }
+      .type5 {
+        border-radius: 0 50%;
+      }
+      .type6 {
+        border-radius: 100px 100px 0 0;
+        height: 50px;
+        margin-bottom: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="type1"></div>
+    <div class="type2"></div>
+    <div class="type3"></div>
+    <div class="type4"></div>
+    <div class="type5"></div>
+    <div class="type6"></div>
+  </body>
+</html>
