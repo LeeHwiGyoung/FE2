@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>overflow</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 20px;
+        border: solid 2px black;
+      }
+      .hidden {
+        overflow: hidden;
+      }
+      .scroll {
+        overflow: scroll;
+      }
+      .auto {
+        overflow: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h2>visible</h2>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos maiores sit
+      necessitatibus facilis! Praesentium nostrum perferendis ullam soluta,
+      voluptates ex placeat. Similique qui perspiciatis labore animi quos quia,
+      possimus sequi?
+    </div>
+    <div class="hidden">
+      <h2>hidden</h2>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore odio
+      praesentium aliquam voluptates nobis, alias nemo soluta ducimus deleniti
+      possimus repellendus dicta, quam quasi! Facilis esse ipsa perspiciatis sit
+      ipsum.
+    </div>
+
+    <div class="scroll">
+      <h2>sroll</h2>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, numquam!
+    </div>
+    <div class="auto">
+      <h2>auto</h2>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi, atque.
+    </div>
+    <div class="auto">
+      <h2>auto</h2>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint,
+      consequuntur porro. Sint numquam quisquam accusantium assumenda sunt
+      accusamus ipsa nemo quasi soluta, labore libero expedita distinctio id,
+      dolores incidunt eaque?
+    </div>
+  </body>
+</html>
