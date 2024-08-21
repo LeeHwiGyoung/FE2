@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      img {
+        width: 300px;
+        aspect-ratio: 3/ 1;
+        object-fit: cover;
+      }
+
+      .padding_img {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-top: 50%;
+      }
+
+      .padding_img > img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+      }
+    </style>
+    <title>이미지 비율</title>
+  </head>
+  <body></body>
+</html>
+
+<div class="thumbnail">
+  <img src="https://picsum.photos/600/300" alt="샘플 이미지" />
+</div>
+
+<div class="padding_img">
+  <img
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSvEHG7OcK13Teful1vrH4BF7bvXlzaumZKQ&s"
+    alt="샘플 이미지"
+  />
+</div>
