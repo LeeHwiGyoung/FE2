@@ -1,0 +1,129 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+    margin : 0;
+    padding : 0;
+}
+
+:root { 
+    --card--box--shadow :  2px 2px 8px 0px #0000001A;
+    --flex--gap : 16px;
+    --margin--left--right : 16px;
+    --pading : 16px;
+}
+
+article {
+    font-family: 'Pretendard-Regular';
+    width: 288px;
+    border-radius: 8px;
+    box-shadow: var(--card--box--shadow);
+    color : #29363d;
+    margin : 16px;
+}
+
+.elip {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+}
+.card1 {
+    height: 348px;
+}
+
+.card1-img {
+    width : 288px;
+    height: 196px;
+    border-radius: 8px 8px 0px 0px;
+ }
+
+.card1-box {
+    display : flex;
+    flex-direction: column;
+    row-gap: var(--flex--gap);
+    margin : 20px var(--margin--left--right) 16px;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 1em;
+}
+
+.content {
+    color: #5A6A72;
+    font-size : 0.75em;
+    line-height: 19.2px;
+}
+
+.btn-read {
+    width: 70px;
+    position: relative;
+    text-decoration: underline;
+    font-size : 0.875em;
+    font-weight: 700;
+    padding : 3px 30px 3px 6px;
+}
+
+.btn-read > img {
+    position: absolute;
+    top : 6px;
+    left :60px;
+}
+
+.card2 {
+    height: 374px;
+}
+
+.card2-header {
+    display : flex;
+    padding: var(--pading);
+    gap: var(--flex--gap);
+    justify-content: center;
+    align-items: center;
+}
+
+.user-image {
+    width :40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.title-box {
+    width: 100%;
+    margin: 3px 0px 3px 0px;
+ }
+
+ .user-name {
+    font-size : 0.75em;
+    color : #5A6a72;
+    margin : 0;
+ }
+
+ .card2-box{
+    margin : 10px var(--margin--left--right) 16px;
+ }
+
+ .button-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+ }
+ 
+ .button-util {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+ }
+
+
+
