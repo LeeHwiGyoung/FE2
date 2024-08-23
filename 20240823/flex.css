@@ -1,0 +1,49 @@
+* {
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;
+}
+.wrap { 
+    display: flex;
+    flex-direction: column;
+    gap : 20px;
+    background-color: navy;
+    color : white;
+    padding: 20px;
+    height: 100vh;
+}
+
+header, footer, aside, section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    width: 100%;
+    background-color: skyblue;
+    height: 20vh;
+}
+
+.content-wrap {
+    display: flex;  
+    width: 100%;
+    gap : 20px;
+}
+ section {
+    flex-grow: 6;
+    height: 60vh;
+    background-color: darkgray;
+}
+
+aside {
+    flex-grow: 4;
+    height: 60vh;
+    background-color: limegreen;
+}
+
+footer {
+    width: 100%;
+    height: 20vh;
+    background-color: coral;
+}
