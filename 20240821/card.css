@@ -12,7 +12,7 @@
 }
 
 :root { 
-    --card--box--shadow :  2px 2px 8px 0px #0000001A;
+    --card--box--shadow :  2px 2px 8px 0px rgba(0,0,0,0.1);
     --flex--gap : 16px;
     --margin--left--right : 16px;
     --pading : 16px;

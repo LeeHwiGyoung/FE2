@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        height: 100vh;
+        background-color: gainsboro;
+        display: grid;
+
+        /* grid-template-columns: 40% 60%; */
+        /* grid-template-columns: 4fr 6fr; */
+        /*
+        fr = 분수 
+        40%  60% 와 4fr 6fr은 같은 비율을 차지하는데
+        gap의 값을 주었을 때 그리드 아이템이 그리드 셀을 벗어난다
+        */
+        grid-gap: 100px;
+        /* 여러개가 반복될 때 repeat 함수 사용 */
+        /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; */
+        /* grid-template-columns: repeat(6, 1fr); */
+        grid-template-columns: 1fr 1fr 1fr;
+
+        /* 고정값과 fr 단위를 함께 사용하면 고정된 요소와 나머지 뷰포트의 너비를 꽉 채울 수 있다. */
+        grid-template-columns: 200px 1fr;
+
+        /* minmax 최솟값과 최댓값을 지정해주는 함수 */
+        /* grid-template-columns: repeat(3,minmax(150px , 1fr)); */
+      }
+
+      .item {
+        padding: 20px;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .item:nth-child(odd) {
+        background-color: cadetblue;
+      }
+
+      .item:nth-child(even) {
+        background-color: rosybrown;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+      <div class="item">6</div>
+      <div class="item">7</div>
+      <div class="item">8</div>
+      <div class="item">9</div>
+    </div>
+  </body>
+</html>
