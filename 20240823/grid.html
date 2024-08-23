@@ -17,17 +17,33 @@
         40%  60% 와 4fr 6fr은 같은 비율을 차지하는데
         gap의 값을 주었을 때 그리드 아이템이 그리드 셀을 벗어난다
         */
-        grid-gap: 100px;
+        grid-gap: 20px;
         /* 여러개가 반복될 때 repeat 함수 사용 */
         /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; */
         /* grid-template-columns: repeat(6, 1fr); */
         grid-template-columns: 1fr 1fr 1fr;
 
         /* 고정값과 fr 단위를 함께 사용하면 고정된 요소와 나머지 뷰포트의 너비를 꽉 채울 수 있다. */
-        grid-template-columns: 200px 1fr;
-
+        /* grid-template-columns: 200px 1fr; */
         /* minmax 최솟값과 최댓값을 지정해주는 함수 */
         /* grid-template-columns: repeat(3,minmax(150px , 1fr)); */
+        /* grid-gap: 20px 50px; 행간의간격 열간의 간격 */
+        /* 행방향 트랙사이즈 설정도 동일 */
+        /* grid-template-rows: 100px 200px 300px; */
+        /* grid-template-rows: 1fr 2fr 3fr; */
+
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(3, 100px);
+        /* 트랙 단위로 수평 수직 정렬 */
+        justify-content: center;
+        align-content: center;
+        /* 셀 내에서 아이템들을 수평, 수직 정렬 */
+        align-items: center;
+        justify-items: center;
+        /* 내부컨텐츠들에 의해 각 아이템들의 높이가 다른 경우
+        각행 들의 높이를 균등하게 맞춰줄때 */
+        grid-auto-rows: 300px;
+        grid-auto-rows: minmax(300px, auto);
       }
 
       .item {

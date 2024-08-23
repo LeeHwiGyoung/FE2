@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gridarea</title>
+    <style>
+      .container {
+        width: 600px;
+        height: 600px;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+        grid-template-areas:
+          "header header header header header"
+          "section1 section1 section1 section1 aside"
+          "section2 section2 section2 section2 aside"
+          "section3 section3 section3 section3 aside"
+          "footer footer footer footer footer";
+        gap: 20px;
+      }
+
+      .item1 {
+        grid-area: header;
+        background-color: #c7ffed;
+      }
+      .item2 {
+        grid-area: aside;
+        background-color: #d8ffdb;
+      }
+      .item3 {
+        grid-area: section1;
+        background-color: #008f8c;
+      }
+      .item4 {
+        grid-area: section2;
+        background-color: #015958;
+      }
+      .item5 {
+        grid-area: section3;
+        background-color: #023535;
+      }
+      .item6 {
+        grid-area: footer;
+        background-color: #ededed;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item item1">item1</div>
+      <div class="item item2">item2</div>
+      <div class="item item3">item3</div>
+      <div class="item item4">item4</div>
+      <div class="item item5">item5</div>
+      <div class="item item6">item6</div>
+    </div>
+  </body>
+</html>
