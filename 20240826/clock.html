@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>clock</title>
+    <style>
+      @keyframes clock {
+        from {
+          transform: rotate(0deg);
+          transform-origin: left;
+        }
+        to {
+          transform: rotate(360deg);
+          transform-origin: left;
+        }
+      }
+      .container {
+        position: relative;
+        background-color: blue;
+        width: 600px;
+        height: 600px;
+        border-radius: 25%;
+      }
+      .sec {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 250px;
+        border-top: 10px solid black;
+        animation: clock;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+      .min {
+        position: absolute;
+        width: 200px;
+        top: 50%;
+        left: 50%;
+        border-top: 10px solid red;
+        animation: clock;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+
+      .hour {
+        position: absolute;
+        width: 150px;
+        border-top: green 10px solid;
+        top: 50%;
+        left: 50%;
+        animation: clock;
+        animation-duration: 60s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sec"></div>
+      <div class="min"></div>
+      <div class="hour"></div>
+    </div>
+  </body>
+</html>
