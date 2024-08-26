@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cat</title>
+    <style>
+      :root {
+        --first--image: url("./cat/2.png");
+        --second--image: url("./cat/1.png");
+        --third--image: url("./cat/3.png");
+      }
+      @keyframes move-cat {
+        0% {
+          background-image: var(--first--image);
+          transform: translateX(0px);
+        }
+        20% {
+          background-image: var(--second--image);
+          transform: translateX(100px);
+        }
+        40% {
+          background-image: var(--third--image);
+          transform: translateX(200px);
+        }
+        60% {
+          background-image: var(--first--image);
+          transform: translateX(300px);
+        }
+        80% {
+          background-image: var(--second--image);
+          transform: translateX(400px);
+        }
+        100% {
+          background-image: var(--third--image);
+          transform: translateX(500px);
+        }
+      }
+      .cat {
+        width: 320px;
+        height: 540px;
+        background: url(./cat/2.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        animation: move-cat, change-cat;
+        animation-duration: 3s;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: both;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cat"></div>
+  </body>
+</html>
