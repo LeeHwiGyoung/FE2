@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>card</title>
+    <style>
+      .card-container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        perspective: 1000px;
+        box-sizing: border-box;
+      }
+      .card {
+        position: relative;
+        width: 300px;
+        height: 400px;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+      }
+
+      .card:hover {
+        transform: translateZ(400px) rotateY(540deg);
+        transition: 1s;
+      }
+      .front,
+      .back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: beige;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+      .front img {
+        width: 100%;
+        height: 300px;
+        object-fit: contain;
+      }
+      .back {
+        backface-visibility: hidden;
+        transform: rotateY(180deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card-container">
+      <div class="card">
+        <div class="front">
+          <p>성장중인 개발자 지망생</p>
+          <img src="./images/gr.png" alt="그루트" />
+        </div>
+        <div class="back">
+          <p>잘부탁드려요</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
