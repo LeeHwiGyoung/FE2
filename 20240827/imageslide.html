@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>imageslide</title>
+    <style>
+      :root {
+        --translateZ: calc((600px * 4) / 3.14 / 2);
+      }
+      @keyframes rotate {
+        to {
+          transform: translate(-50%, -50%) rotateY(1turn);
+        }
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      div {
+        height: 100vh;
+        perspective: 900px;
+      }
+      .list-item {
+        position: relative;
+        width: 600px;
+        height: 800px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transform-style: preserve-3d;
+        animation: rotate 5s infinite linear;
+      }
+      .list-item > li {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+      }
+
+      li img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      li:nth-child(1) {
+        transform: rotateY(0) translateZ(var(--translateZ));
+      }
+
+      li:nth-child(2) {
+        transform: rotateY(calc(360deg / 4)) translateZ(var(--translateZ));
+      }
+
+      li:nth-child(3) {
+        transform: rotateY(calc((360deg / 4) * 2)) translateZ(var(--translateZ));
+      }
+
+      li:nth-child(4) {
+        transform: rotateY(calc((360deg / 4) * 3)) translateZ(var(--translateZ));
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <ul class="list-item">
+        <li><img src="./images/lion.png" alt="라이언" /></li>
+        <li><img src="./images/gr.png" alt="그루트" /></li>
+        <li><img src="./images/to.png" alt="토르" /></li>
+        <li><img src="./images/iron.png" alt="아이언맨" /></li>
+      </ul>
+    </div>
+  </body>
+</html>
