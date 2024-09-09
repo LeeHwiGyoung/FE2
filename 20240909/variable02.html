@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var a = "weniv"; //전역스코프
+
+      function func() {
+        var a = "fe";
+        var b = "hello"; //지역스코프(함수스코프)
+        console.log(a); //fe
+        console.log(b);
+
+        console.log(window.a); //weniv
+      }
+      func();
+
+      // let const -> 블록 스코프
+      // 코드 블록 {}
+      // 조건문, 반복문
+      if (1) {
+        let c = 30; //지역스코프 (블록 스코프)
+        console.log(c);
+
+        var d = 40; //전역 스코프
+      }
+
+      console.log(c); //지역 스코프(블록스코프라 참조 x)
+      console.log(d); // 접근 가능
+    </script>
+  </body>
+</html>
