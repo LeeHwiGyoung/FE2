@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log("안녕하세요!");
+      console.log("안녕하세요", "휘경입니다"); //여러 개 출력
+      // 여러 타입의 콘솔
+      //   필터링이 가능
+      console.error("에러입니다."); //빨간색 메세지
+      console.warn("경고입니다."); //노란색 메세지
+      console.info("안내입니다.");
+      //표 형태
+      console.table({
+        이름: "휘경",
+        위치: "한국",
+      });
+
+      console.time("tick");
+      console.timeEnd("tick");
+
+      console.log("%chellow world", "color:hotpink; font-size:24;");
+    </script>
+  </body>
+</html>
