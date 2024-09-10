@@ -41,7 +41,22 @@
 
       console.log("제 이름은" + name2 + "입니다" === "제 이름은 weniv 입니다");
       // 피연산자 하나가 문자열이면 문자열 연결로처리
+      //인덱스 탐색
       text.indexOf("hello", 5);
+      //lastIndexOf
+      //뒤에서부터 탐색
+      console.log(text2, lastIndexOf("hello"));
+      //includes 포함하는지
+      console.log(text2.includes("hello")); //true
+      console.log(text2.includes("hellos")); //false
+
+      //match  정규표현식 사용하여 일치하는 문자열 탐색
+      console.log(text2.match(/[A-Z]/g)); //전체를 탐색
+
+      //replace
+      //찾고자 하는 요소를 찾아 다른 값으로 변경
+      //원본이 아닌 대체 문자열을 새롭게반환
+      console.log(text2.replace("hello", "hi"));
     </script>
   </body>
 </html>
