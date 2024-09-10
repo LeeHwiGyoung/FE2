@@ -50,3 +50,10 @@ console.log(x==="10")
  console.log(`!false >> ${!false}`);
  console.log(`!!true >> ${!!true}`);
  console.log(`!!false >> ${!!false}`);
+
+ 
+if ("") {
+   // 23 -> Truthy한 값
+   // '' -> Falsy한 값
+   console.log("True입니다!");
+ }
