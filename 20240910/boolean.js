@@ -27,7 +27,7 @@ console.log(x==="10")
 
  // 2 or 논리합
 
- console.log("===논리곱===");
+ console.log("===논리합===");
 
  console.log(`true && true >> ${true||true}`);
  console.log(`true && false >> ${true||false}`);
@@ -42,3 +42,11 @@ console.log(x==="10")
  }else{
     console.log('외출을 한다.')
  }
+ // 2 or 논리부정 !
+
+ console.log("===논리부정===");
+
+ console.log(`!true >> ${!true}`);
+ console.log(`!false >> ${!false}`);
+ console.log(`!!true >> ${!!true}`);
+ console.log(`!!false >> ${!!false}`);

@@ -95,3 +95,19 @@ const phoneNumbers = [
   
   const newArr = arr1.concat(arr2, arr3, 10, 11);
   console.log(newArr);
+
+  const arrs = [1, 2, 3, 4, 5, 6, 7, 8];
+  
+  const filtering = arrs.filter((el) => !(el%2))
+
+  const squareArr = filtering.map((el) => el ** 2);
+
+  const sum = squareArr.reduce((accumlator, current) => {
+    return accumlator + current
+  } , 0);
+
+  console.log(sum)
+
+
+  
+
