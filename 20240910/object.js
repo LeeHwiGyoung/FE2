@@ -39,3 +39,36 @@ delete user.job; // 삭제
 
 console.log('job' in user); //false
 console.log('name' in user); //true
+
+//객체의 중첩
+const user = {
+    name : "licat",
+    company,
+    location : {
+        country : "korea",
+        city : "jeju",
+    },
+    greeting () {
+        console.log("Hello, I am licat!");
+    },
+    "co-worker" : ["binky" , "mura" , "soulgom"],
+};
+
+console.log(user["location"]['city']);
+
+//객체 순회
+
+for (const key in user) {
+    console.log(key , user[key]);
+}
+//fon in 순서를 보장 X
+
+const weniv = {
+    ceo : "Licat",
+    manager: "Mura",
+    designer : "Soulgom",
+};
+
+console.log("Object.keys", Object.keys(weniv));
+console.log("Object.values", Object.values(weniv));
+console.log("Object.entries", Object.entries(weniv));
