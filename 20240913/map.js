@@ -23,6 +23,9 @@ let m = new Map([
   console.log(m.get({ name: "licat", age: 20 })); // undefined
   console.log(m.get(user)); // ceo
   
+  console.log("===값 확인하기===")
+  console.log(m.has(true));//true
+  console.log(m.has('licat'));//false
   console.log("=== 사이즈 ===");
   const obj = { name: "licat", age: 20 };
   console.log(obj.length); // undefined
