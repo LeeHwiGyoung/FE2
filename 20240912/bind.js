@@ -19,5 +19,4 @@ licat.greeting.apply(wade , ['binky' , 'mura']); //인자의 형태가 다름
 console.log('===bind===');
 
 const wadeGreeting = licat.greeting.bind(wade);
-
-wadeGreeting()
+wadeGreeting();
