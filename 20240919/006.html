@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .dim {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 10;
+      }
+      .modal-container {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        height: 50vh;
+        padding: 20px;
+        border-radius: 20px;
+        background-color: steelblue;
+        z-index: 100;
+      }
+      .open {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn-notice" type="button">notice</button>
+    <div class="dim"></div>
+    <article class="modal-container">
+      <h2>MODAL Notice</h2>
+    </article>
+    <script>
+      const btn_notice = document.querySelector(".btn-notice");
+      const modal = document.querySelector(".modal-container");
+      const dim = document.querySelector(".dim");
+      btn_notice.addEventListener("click", (event) => {
+        modal.classList.add("open");
+        dim.classList.add("open");
+      });
+
+      dim.addEventListener("click", (event) => {
+        modal.classList.remove("open");
+        dim.classList.remove("open");
+      });
+    </script>
+  </body>
+</html>
