@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #f3f3f3;
+        height: 2500px;
+      }
+      h1,
+      h2 {
+        text-align: center;
+      }
+      .container {
+        background-color: #fff;
+        width: 500px;
+        margin: 100px auto 0;
+        height: 200px;
+        border: 1px solid #d8d8d8;
+        border-radius: 20px;
+        padding: 2rem;
+        line-height: 1.5;
+        overflow-y: auto;
+      }
+
+      .header {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0, 2);
+        transition: 0.4s;
+        z-index: 4;
+      }
+
+      .header.sticky {
+        position: sticky;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1>TITLE</h1>
+    </header>
+    <div class="container">
+      <h2>SCROLL EVENT</h2>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde fugiat id
+        perspiciatis in ipsum labore, vitae modi eius impedit voluptatibus.
+        Temporibus fugiat suscipit ipsam? Hic officiis architecto error atque
+        temporibus!
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde fugiat id
+        perspiciatis in ipsum labore, vitae modi eius impedit voluptatibus.
+        Temporibus fugiat suscipit ipsam? Hic officiis architecto error atque
+        temporibus!
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde fugiat id
+        perspiciatis in ipsum labore, vitae modi eius impedit voluptatibus.
+        Temporibus fugiat suscipit ipsam? Hic officiis architecto error atque
+        temporibus!
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde fugiat id
+        perspiciatis in ipsum labore, vitae modi eius impedit voluptatibus.
+        Temporibus fugiat suscipit ipsam? Hic officiis architecto error atque
+        temporibus!
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde fugiat id
+        perspiciatis in ipsum labore, vitae modi eius impedit voluptatibus.
+        Temporibus fugiat suscipit ipsam? Hic officiis architecto error atque
+        temporibus!
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde fugiat id
+        perspiciatis in ipsum labore, vitae modi eius impedit voluptatibus.
+        Temporibus fugiat suscipit ipsam? Hic officiis architecto error atque
+        temporibus!
+      </p>
+    </div>
+    <script>
+      const container = document.querySelector(".container");
+      const header = document.querySelector(".header");
+      function throttle(mainFunc, delay) {
+        let timerFlag = null;
+
+        return (...args) => {
+          if (timerFlag === null) {
+            mainFunc(...args);
+            timerFlag = setTimeout(() => {
+              timerFlag = null;
+            }, delay);
+          }
+        };
+      }
+
+      const scrollControll = (event, scrollHeight, target, className) => {
+        event.currentTarget.scrollY > scrollHeight
+          ? target.classList.add(className)
+          : target.classList.remove(className);
+      };
+
+      window.addEventListener("scroll", (event) =>
+        throttle(scrollControll(event, 50, header, "sticky"), 3000)
+      );
+      //스크롤이 50보다 커지면 header 고정
+      //작아지면 header 고정 x
+      container.addEventListener(
+        "scroll",
+        throttle(() => {
+          container.style.backgroundColor = "gold";
+        }, 3000)
+      );
+    </script>
+  </body>
+</html>
