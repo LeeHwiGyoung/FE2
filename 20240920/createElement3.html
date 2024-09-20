@@ -6,30 +6,42 @@
     <title>Document</title>
   </head>
   <body>
-    <input type="text" id="input-fruit" />
+    <input type="text" id="input-food" />
     <button type="button" id="btn-add">ADD</button>
     <ul class="foodList"></ul>
     <script>
       const foodList = document.querySelector(".foodList");
-      const input_fruit = document.getElementById("input-fruit");
+      const input_food = document.getElementById("input-food");
       const btn_add = document.getElementById("btn-add");
 
-      btn_add.addEventListener("click", (event) =>
-        createFoodListItem(event, input_fruit.value)
-      );
+      btn_add.addEventListener("click", createFoodListItem);
 
-      function createFoodListItem(event, content) {
+      function createFoodListItem() {
+        const content = input_food.value;
         if (content === "") {
           return;
         }
         const li = document.createElement("li");
-        const del_btn = document.createElement("button");
+        const del_btn = createDelBtn();
         li.textContent = content;
-        del_btn.type = "button";
-        del_btn.className = "btn-delete";
-        del_btn.textContent = "X";
         li.appendChild(del_btn);
         foodList.appendChild(li);
+        resetFoodValue();
+      }
+
+      function createDelBtn() {
+        const del_btn = document.createElement("button");
+        del_btn.setAttribute("type", "button");
+        del_btn.setAttribute("className", "btn-delete");
+        del_btn.textContent = "X";
+        del_btn.addEventListener("click", function () {
+          del_btn.parentElement.remove();
+        });
+        return del_btn;
+      }
+
+      function resetFoodValue() {
+        input_food.value = "";
       }
     </script>
   </body>
