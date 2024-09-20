@@ -18,11 +18,35 @@
       const foodList = document.querySelector(".foodList");
       const li = document.createElement("li");
       li.textContent = "APPLE";
-      const span = document.createElement("span");
-      span.className = "red";
-      span.textContent = "Mango";
+      const span = createSpan("red", "mango");
+      const img = createImg("", "./images/bat.jpg", "할로윈 박쥐 이미지");
       li.appendChild(span);
+      li.appendChild(img);
+      const strong = createStrongTag("", "strongTag");
+      li.insertBefore(strong, img);
       foodList.appendChild(li);
+
+      function createSpan(className, content) {
+        const span = document.createElement("span");
+        span.className = className;
+        span.textContent = content;
+        return span;
+      }
+
+      function createImg(className = "", srcAddr, alt = "") {
+        const img = document.createElement("img");
+        img.className = className;
+        img.setAttribute("src", srcAddr);
+        img.setAttribute("alt", alt);
+        return img;
+      }
+
+      function createStrongTag(className = "", content = "") {
+        const strong = document.createElement("strong");
+        strong.className = className;
+        strong.textContent = content;
+        return strong;
+      }
     </script>
   </body>
 </html>
