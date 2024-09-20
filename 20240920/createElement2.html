@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Element</h1>
+    <ul class="foodList"></ul>
+    <button type="button" id="btn">li 추가</button>
+    <script>
+      const foodList = document.querySelector(".foodList");
+      const btn_add = document.getElementById("btn");
+
+      btn_add.addEventListener("click", createFoodListLi);
+
+      function createFoodListLi() {
+        const li = document.createElement("li");
+        li.textContent = "APPLE";
+        foodList.appendChild(li);
+      }
+    </script>
+  </body>
+</html>
