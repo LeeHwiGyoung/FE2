@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./CSS/common.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Count</h2>
+      <div class="count-container">
+        <button id="minus" type="button">-</button>
+        <span id="num">0</span>
+        <button id="plus" type="button">+</button>
+      </div>
+    </div>
+    <script>
+      const btn_plus = document.getElementById("plus");
+      const btn_minus = document.getElementById("minus");
+      const display_count = document.getElementById("num");
+      let count = 0;
+      btn_plus.addEventListener("click", (e) => {
+        count++;
+        display_count.innerText = count;
+      });
+
+      btn_minus.addEventListener("click", (e) => {
+        count--;
+        display_count.innerText = count;
+      });
+    </script>
+  </body>
+</html>

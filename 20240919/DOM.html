@@ -9,24 +9,30 @@
     <!-- DOM 노드에 접근 횟수가 궁금해서 GPT에 물어본 코드 -->
     <button id="countButton">Click me</button>
     <p id="countDisplay">Count: 0</p>
+    <p class="queryCount">Count : 0</p>
     <p id="domAccessCount">DOM Access Count: 0</p>
     <script>
       let count = 0;
+      let countForQuery = 0;
       let domAccessCount = 0;
 
       const button = document.getElementById("countButton");
       const countDisplay = document.getElementById("countDisplay");
+      const queryCount = document.querySelector(".queryCount");
       const domAccessDisplay = document.getElementById("domAccessCount");
 
       button.addEventListener("click", function () {
         // 카운트를 증가시키고 DOM에 접근
         count++;
         domAccessCount++;
-
+        countForQuery++;
         // 카운트를 업데이트하는 과정에서 DOM에 두 번 접근 (카운트 표시와 DOM 접근 횟수 표시)
         countDisplay.textContent = `Count: ${count}`;
+        queryCount.textContent = `Count: ${countForQuery}`;
         domAccessCount++;
         domAccessDisplay.textContent = `DOM Access Count: ${domAccessCount}`;
+        console.log("queryCount", queryCount);
+        console.log("count", countDisplay);
       });
     </script>
   </body>
