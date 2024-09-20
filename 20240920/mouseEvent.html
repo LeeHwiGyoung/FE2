@@ -50,12 +50,12 @@
     </div>
     <script>
       const thumbs = document.querySelector(".thumbs");
-      thumbs.addEventListener("mouseenter", () => {
-        thumbs.classList.add("hover");
+      thumbs.addEventListener("mouseenter", (e) => {
+        e.target.classList.add("hover");
       });
 
-      thumbs.addEventListener("mouseleave", () => {
-        thumbs.classList.remove("hover");
+      thumbs.addEventListener("mouseleave", (e) => {
+        e.target.classList.remove("hover");
       });
     </script>
   </body>
