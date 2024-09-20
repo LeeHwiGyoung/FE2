@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./CSS/common.css" />
+    <style>
+      .red {
+        color: red;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Element</h1>
+    <ul class="foodList"></ul>
+    <script>
+      const foodList = document.querySelector(".foodList");
+      const li = document.createElement("li");
+      li.textContent = "APPLE";
+      const span = document.createElement("span");
+      span.className = "red";
+      span.textContent = "Mango";
+      li.appendChild(span);
+      foodList.appendChild(li);
+    </script>
+  </body>
+</html>
