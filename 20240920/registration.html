@@ -76,6 +76,7 @@
       };
 
       const setResultMsg = () => {
+        // 유저의 입력에 대한 innerHTML을 사용하면 보안상의 위험이 있다 . html 태그 삽입 가능
         result.innerHTML = `<p><strong>${
           fm.user.value
         }(${getGrade()})</strong></p>
