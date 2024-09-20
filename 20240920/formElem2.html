@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/common.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Change BODY color</h2>
+      <p id="msg">이전색상 : ?</p>
+      <input type="color" id="color" />
+      <input type="text" id="input" name="color" placeholder="input color" />
+      <button type="button" id="btn">CHANGE!</button>
+    </div>
+    <script>
+      const msg = document.getElementById("msg");
+      const input_color = document.getElementById("color");
+      const input_text = document.getElementById("input");
+      const btn_change = document.getElementById("btn");
+      const body = document.getElementsByTagName("body");
+      let prev_color = "";
+
+      /* input_color.addEventListener("change", (e) => {
+        prev_color = body[0].style.background;
+        body[0].style.background = e.target.value;
+        msg.textContent = prev_color
+          ? `${prev_color} , 지금 색상 : ${e.target.value}`
+          : `지금 색상 : ${e.target.value}`;
+      }); */
+
+      input_color.addEventListener("change", () => {
+        input_text.value = input_color.value;
+      });
+      btn_change.addEventListener("click", () => {
+        prev_color = body[0].style.background;
+        const cur_color = input.value;
+        body[0].style.background = cur_color;
+
+        msg.textContent = prev_color
+          ? `${prev_color}, 지금 색상 : ${cur_color}`
+          : `지금 색상 : ${cur_color}`;
+      });
+    </script>
+  </body>
+</html>
