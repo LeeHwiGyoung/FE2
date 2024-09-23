@@ -111,13 +111,13 @@
       const select_list = document.querySelector(".list-member");
 
       btn_select.addEventListener("click", (e) => {
-        btn_select.classList.toggle("on");
+        e.currentTarget.classList.toggle("on");
       });
 
       select_list.addEventListener("click", (e) => {
         if (e.target.nodeName === "BUTTON") {
-          btn_select.classList.remove("on");
           btn_select.textContent = e.target.textContent;
+          btn_select.classList.remove("on");
         }
       });
     </script>
