@@ -9,8 +9,14 @@ Parent.prototype.sayName = function () {
   console.log(this.name);
 };
 
+/* 
+   생성자 호출 순서에서 parent가 먼저 호출되기 때문에 constructor에 parent가 들어가는것인가?
+    => Object.create를 통해 prototype을 설정하게 되면 생성자를 포함하여 프로토타입 메서드를 상속받는다
+    이 때 consturctor 가 덮어씌워진다.
+  
+   */
 function Child() {
-  Parent.call(this);
+  Parent.call(this); // parent의 this가 child를 가리키게 됨
   this.gender = "male";
 }
 
