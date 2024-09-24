@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function Robot() {
+      this.foodList = [];
+      this.setFoodList = function (foodList) {
+        this.foodList = [...foodList];
+        // this.foodList = foodList; 얇은 복사 전달한 배열을 수정시 내부 foodList도 변함
+      };
+      this.selectFood = function () {
+        const idx = Math.floor(Math.random() * this.foodList.length);
+        console.log(`선택된 음식은 ${this.foodList[idx]}입니다.`);
+        return this.foodList[idx];
+      };
+    }
+  </script>
+</html>
