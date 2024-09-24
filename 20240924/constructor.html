@@ -7,8 +7,8 @@
   </head>
   <body></body>
   <script>
-    function Robot() {
-      this.foodList = [];
+    function Robot(foodList) {
+      this.foodList = [...foodList];
       this.setFoodList = function (foodList) {
         this.foodList = [...foodList];
         // this.foodList = foodList; 얇은 복사 전달한 배열을 수정시 내부 foodList도 변함
