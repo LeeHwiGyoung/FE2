@@ -1,11 +1,11 @@
 class Todo {
   constructor(work) {
     this.work = work;
-    this.done = false;
+    this.isDone = false;
   }
 
   changeState() {
-    this.done = !this.done;
+    this.isDone = !this.isDone;
   }
 }
 
@@ -20,13 +20,14 @@ class TodoManager {
   }
 
   getItems() {
-    this.todoList.forEach((el, idx) => {
-      console.log(`${idx + 1}. ${el.work}`);
+    this.todoList.forEach((toDo, idx) => {
+      console.log(`${idx + 1}. ${toDo.work}`);
     });
   }
 
   getLeftTodoCount() {
-    console.log(`${this.todoList.filter((el) => !el.done).length}`);
+    const remain = this.todoList.filter((toDo) => !toDo.isDone);
+    console.log(`${remain.length}`);
   }
 }
 
