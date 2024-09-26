@@ -24,6 +24,9 @@ class UserStorage {
         } else {
           throw new Error("no user data");
         }
+      })
+      .catch((error) => {
+        throw error;
       });
   }
 
@@ -46,6 +49,9 @@ class UserStorage {
         } else {
           throw new Error("no user greeting");
         }
+      })
+      .catch((error) => {
+        throw error;
       });
   }
 }
