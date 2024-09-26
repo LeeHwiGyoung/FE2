@@ -14,7 +14,6 @@ class FiresSausage extends Sausage {
     super(ingredient1, ingredient2);
   }
   taste() {
-    super.taste();
-    console.log("불맛이 난다!");
+    console.log(`${this.ingredient1}와 ${this.ingredient2} 맛과 불맛이 난다!`);
   }
 }
