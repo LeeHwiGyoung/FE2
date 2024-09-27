@@ -4,10 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      #todolist {
+        list-style: none;
+      }
+    </style>
   </head>
   <body>
-    <div>
-      <p id="todolist">여기에 get 메세지 갖고오기</p>
+    <div class="to-do-container">
+      <label for="new-to-do"></label>
+      <input
+        class="new-to-do"
+        name="new-to-do"
+        type="text"
+        placeholder="new todo..."
+      />
+      <ul id="to-do-list"></ul>
     </div>
     <script src="./TodoTest.js"></script>
     <!-- <script src="./helltopromise.js"></script> -->
