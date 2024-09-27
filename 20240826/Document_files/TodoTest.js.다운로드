@@ -1,0 +1,88 @@
+class Todo {
+  constructor(work) {
+    this.work = work;
+    this.isDone = false;
+  }
+
+  changeState() {
+    this.isDone = !this.isDone;
+  }
+}
+
+class TodoManager {
+  constructor(todoList) {
+    this.todoList = [...todoList];
+  }
+
+  addItem(work) {
+    const toDo = new Todo(work);
+    this.todoList = [...this.todoList, toDo];
+  }
+
+  getTodoList() {
+    return this.todoList;
+  }
+
+  getItems() {
+    this.todoList.forEach((toDo, idx) => {
+      console.log(`${idx + 1}. ${toDo.work}`);
+    });
+  }
+
+  getLeftTodoCount() {
+    const remain = this.todoList.filter((toDo) => !toDo.isDone);
+    console.log(`${remain.length}`);
+  }
+}
+
+const todoContainer = document.getElementById("todolist");
+const BASE_URL = "http://localhost:5000";
+
+async function getTodoList() {
+  try {
+    const response = await fetch(`${BASE_URL}/todolist`);
+    if (!response.ok) {
+      console.error(`HTTP Error : ${response.status}`);
+    }
+    const data = await response.json();
+    todoContainer.textContent = `${data.todoList}`;
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function postTodoList(toDoList) {
+  const response = await fetch(`${BASE_URL}/todo`, {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(toDoList),
+  });
+  console.log(response);
+}
+
+async function initTodoManager() {
+  try {
+    const data = await getTodoList("hwigyoung");
+    if (!data) {
+      throw new Error("do not get Data");
+    }
+    const todoManager = new TodoManager(data.todoList);
+    return todoManager;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+const todoManager = initTodoManager();
+todoContainer.addEventListener("click", (e) => {
+  todoManager.addItem("코딩하기");
+  const todoList = todoManager.getTodoList();
+  postTodoList(todoList);
+});
+/* addItem(work) {
+  const toDo = new Todo(work);
+  this.todoList = [...this.todoList, toDo];
+  } */
