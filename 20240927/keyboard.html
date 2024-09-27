@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+        transition: translateX ease;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+  </body>
+  <script>
+    const box = document.querySelector(".box");
+    const body = document.body;
+    const BOX_WIDTH = box.clientWidth;
+    const BODY_WIDTH = body.clientWidth - BOX_WIDTH;
+
+    let xPos = 0;
+    body.addEventListener("keydown", move);
+
+    function move(event) {
+      if (event.key === "ArrowRight") {
+        moveRight(box);
+      } else if (event.key === "ArrowLeft") {
+        moveLeft(box);
+      }
+    }
+    function moveLeft(element) {
+      if (xPos === 0) {
+        return;
+      }
+      xPos--;
+      element.style.transform = `translateX(${xPos}px)`;
+    }
+
+    function moveRight(element) {
+      if (xPos === BODY_WIDTH) {
+        return;
+      }
+      xPos++;
+      element.style.transform = `translateX(${xPos}px)`;
+    }
+  </script>
+</html>
