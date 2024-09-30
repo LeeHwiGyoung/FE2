@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      input:required {
+        border-color: blue;
+      }
+
+      input:required:valid {
+        border-color: green;
+      }
+
+      input:required:not(:valid) {
+        border-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <label for="username"
+      >사용자 이름 (5~10자) :
+      <input id="username" type="text" minlength="5" maxlength="10" required />
+    </label>
+    <label for="email"
+      >이메일 : <input type="email" id="email" required />
+    </label>
+    <label for="age"
+      >나이 (18~65자) :
+      <input type="number" id="age" min="18" max="65" required />
+    </label>
+  </body>
+</html>

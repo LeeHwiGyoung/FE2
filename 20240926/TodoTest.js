@@ -69,18 +69,32 @@ function displayToDoItem(toDoList) {
 
 async function getToDoList() {
   try {
-    const response = await fetch(`${BASE_URL}/toDoList`);
+    const response = await fetch(`${BASE_URL}/toDo`);
     if (!response.ok) {
       console.error(`HTTP Error : ${response.status}`);
     }
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.error(error);
   }
 }
 
+async function postTodoitem(toDoItem) {
+  try {
+    const response = await fetch(`${BASE_URL}/toDo`, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(toDoItem),
+    });
+    const res = response.json();
+    return res;
+  } catch (error) {
+    console.error(error);
+  }
+}
 async function postTodoList(toDoList) {
   try {
     const changeFormat = { toDoList: toDoList };
@@ -104,17 +118,15 @@ async function initTodoManager(todoManager) {
   displayToDoItem(data.toDoList);
 }
 
-const todoManager = new ToDoManager();
-initTodoManager(todoManager);
+async function deleteTodoItem(id) {
+  const url = new URL(`${BASE_URL}/toDo`);
+  const params = {
+    id: id,
+  };
 
-newTodo.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    todoManager.addItem(newTodo.value);
-    postTodoList(todoManager.getTodoList()).then((res) => {
-      displayToDoItem(res.toDoList);
-    });
-  }
-});
+  url.search = new URLSearchParams(params).toString();
+  await fetch(url, { method: "delete" });
+}
 
 ulToDoList.addEventListener("click", (e) => {
   let id = -1;
@@ -124,6 +136,35 @@ ulToDoList.addEventListener("click", (e) => {
   ) {
     id = e.target.parentNode.dataset.id;
     e.currentTarget.removeChild(e.target.parentNode);
+    deleteTodoItem(id);
   }
-  console.log(id);
 });
+
+newTodo.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    todoManager.addItem(newTodo.value);
+    postTodoitem(todoManager.getTodoList().slice(-1)[0]).then((res) =>
+      console.log(res)
+    );
+    /*  postTodoList(todoManager.getTodoList()).then((res) => {
+      displayToDoItem(res.toDoList);
+      });*/
+  }
+});
+
+async function updateToDoItem(toDoItem) {
+  try {
+    const response = await fetch(`${BASE_URL}/toDo`, {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(toDoItem),
+    });
+    const res = await response.json();
+  } catch (error) {
+    console.error(error);
+  }
+}
+const todoManager = new ToDoManager();
+initTodoManager(todoManager);
