@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form name="password_form">
+      <label for="password"></label>
+      <input type="text" id="password" name="password" required />
+      <label for="password_check"></label>
+      <input type="text" name="password_check" id="password_check" required />
+      <p class="msg"></p>
+      <button type="submit" disabled>제출</button>
+    </form>
+    <script>
+      const form = document.forms.password_form;
+      const msg = form.querySelector(".msg");
+      const pw = form.password;
+      const check_pw = form.password_check;
+      const btn = form.querySelector("button");
+      const pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/m; //최소 8자 숫자,소,대문자 포함 특수문자 입력 가능
+      function check_match_pw(pw1, pw2) {
+        if (pw1 !== pw2) {
+          return true;
+        }
+        return false;
+      }
+
+      function check_blank_pw(pw) {
+        if (pw === "") {
+          return true;
+        }
+        return false;
+      }
+
+      function validatePw() {
+        if (check_blank_pw(pw.value) || check_blank_pw(check_pw.value)) {
+          msg.textContent = "비밀번호를 입력하세요";
+          return false;
+        } else if (check_match_pw(pw.value, check_pw.value)) {
+          msg.textContent = "비밀번호와 비밀번호 확인이 일치하지 않습니다.";
+          return false;
+        } else if (!pattern.test(pw.value) || !pattern.test(check_pw.value)) {
+          msg.textContent =
+            "비밀번호는 숫자,영소문자,영대문자를 포함하며 8자 이상이어야 합니다.";
+          return false;
+        } else {
+          msg.textContent = "";
+          return true;
+        }
+      }
+
+      pw.addEventListener("blur", (e) => {
+        if (validatePw()) {
+          btn.removeAttribute("disabled");
+          return;
+        }
+        btn.disabled = true;
+      });
+
+      check_pw.addEventListener("blur", (e) => {
+        if (validatePw()) {
+          btn.removeAttribute("disabled");
+          return;
+        }
+        btn.disabled = true;
+      });
+    </script>
+  </body>
+</html>
