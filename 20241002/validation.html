@@ -20,7 +20,7 @@
       const pw = form.password;
       const check_pw = form.password_check;
       const btn = form.querySelector("button");
-      const pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/m; //최소 8자 숫자,소,대문자 포함 특수문자 입력 가능
+      const pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g; //최소 8자 숫자,소,대문자 포함 특수문자 입력 가능
       function check_match_pw(pw1, pw2) {
         if (pw1 !== pw2) {
           return true;
