@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas width="1000" height="1000"></canvas>
+    <script>
+      const canvas = document.querySelector("canvas");
+      const ctx = canvas.getContext("2d"); // drawing context를 참조합니다.
+      class Ball {
+        constructor(x, y) {
+          this.x = x;
+          this.y = y;
+          this.radius = 5;
+          this.color = "black";
+        }
+
+        draw(context) {
+          context.beginPath();
+          context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          context.fillStyle = this.color;
+          context.fill();
+          context.closePath();
+        }
+      }
+      const balls = [];
+      for (let i = 1; i < 100; i++) {
+        const ball = new Ball(10 * i, 10 * i);
+        balls.push(ball);
+      }
+
+      balls.forEach((el) => {
+        el.draw(ctx);
+      });
+    </script>
+  </body>
+</html>
