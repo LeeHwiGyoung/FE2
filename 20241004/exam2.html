@@ -30,20 +30,42 @@
       //args.length => 실행됐을 때
       //func.length => 매개변수의 갯수
 
-      function curry(func) {
+      /*   function curry(func) {
         function curried(...args) {
           return args.length >= func.length
             ? func(...args)
             : (...otherArgs) => curried(...args, ...otherArgs);
         }
         return curried;
-      }
+      } */
 
-      function discount(saleRate, price) {
+      function curry(func) {
+        return function curried(...args) {
+          // 원래 함수의 전체 매개변수 개수 (기본값 포함)
+
+          const totalParams = func
+            .toString()
+            .match(/\(([^)]*)\)/)[1]
+            .split(",")
+            .map((param) => param.trim())
+            .filter(Boolean).length;
+          //함수를 스트링으로 변환시켜 함수의 매개변수 부분을 찾는다 . 그 이후 쉼표를 기준으로 매개변수를 나누고
+
+          // 실제로 받은 인자가 전체 매개변수 개수에 도달했는지 확인
+          if (args.length >= totalParams) {
+            return func(...args); // 모든 인자를 다 받으면 원래 함수 호출
+          } else {
+            return (...otherArgs) => curried(...args, ...otherArgs); // 아직 모자라면 나머지 인자를 받는 새로운 함수 반환
+          }
+        };
+      }
+      function discount(saleRate = 0.1, price) {
+        //매개변수 기본 값을 등록하면 그 이후의 매개 변수는 function.length에 영향을 주지 않는다.
         return price - price * saleRate;
       }
 
       const price = [10000, 20000];
+
       const curryDiscount = curry(discount); // => curryDiscount = curried(...args , ...ohterargs) args = [];
 
       const discount10 = curryDiscount(0.1); //curryDiscount(0.1) = curried([0.1])
