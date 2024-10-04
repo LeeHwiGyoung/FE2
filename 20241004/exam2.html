@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*  function add(x, y, z) {
+        return x + y + z;
+      }
+
+      add(1, 2, 3); // 6
+
+      function curriedAdd(x) {
+        return function (y) {
+          return function (z) {
+            return x + y + z;
+          };
+        };
+      }
+
+      console.log(curriedAdd(1)(2)(3));
+
+      const curriedAdd2 = (x) => (y) => (z) => x + y + z;
+
+      console.log(curriedAdd2(3)(2)(1)); */
+
+      //args.length => 실행됐을 때
+      //func.length => 매개변수의 갯수
+
+      function curry(func) {
+        function curried(...args) {
+          return args.length >= func.length
+            ? func(...args)
+            : (...otherArgs) => curried(...args, ...otherArgs);
+        }
+        return curried;
+      }
+
+      function discount(saleRate, price) {
+        return price - price * saleRate;
+      }
+
+      const price = [10000, 20000];
+      const curryDiscount = curry(discount); // => curryDiscount = curried(...args , ...ohterargs) args = [];
+
+      const discount10 = curryDiscount(0.1); //curryDiscount(0.1) = curried([0.1])
+
+      const discount20 = curryDiscount(0.2); //curryDiscount(0.2) = curried([0.2])
+
+      price_10 = price.map(discount10); //discount10 = curriend([0.1] , price)
+      price_20 = price.map(discount20);
+
+      console.log(price_10, price_20);
+    </script>
+  </body>
+</html>

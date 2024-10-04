@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      span {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem iure
+      nesciunt odio praesentium, illo repellat, repudiandae incidunt perferendis
+      alias qui illum unde. Unde, fuga. Vero sequi alias quidem quam ipsum.
+    </p>
+    <script>
+      const p = document.querySelector("p");
+      const separate = p.textContent.split(" ");
+
+      const injectionSpan = (text) => {
+        return `<span>${text}</span>`;
+      };
+
+      const injectSpan = separate.map((text) =>
+        text.length >= 8 ? injectionSpan(text) : text
+      );
+
+      p.innerHTML = injectSpan.join(" ");
+    </script>
+  </body>
+</html>

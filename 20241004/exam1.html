@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const users = [
+        {
+          id: 1,
+          name: "재현",
+          isActive: true,
+          age: 20,
+        },
+        {
+          id: 2,
+          name: "호준",
+          isActive: true,
+          age: 18,
+        },
+        {
+          id: 3,
+          name: "유진",
+          isActive: false,
+          age: 30,
+        },
+      ];
+
+      const names = [...users]
+        .sort((a, b) => b.age - a.age)
+        .filter((user) => user.isActive)
+        .map((user) => user.name);
+      console.log(names);
+    </script>
+  </body>
+</html>

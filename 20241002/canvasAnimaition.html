@@ -25,9 +25,14 @@
           context.fill();
           context.closePath();
         }
+
+        move() {
+          this.x += 1;
+          this.y += 1;
+        }
       }
       const balls = [];
-      for (let i = 1; i < 100; i++) {
+      for (let i = 1; i < 50; i++) {
         const ball = new Ball(10 * i, 10 * i);
         balls.push(ball);
       }
@@ -35,6 +40,16 @@
       balls.forEach((el) => {
         el.draw(ctx);
       });
+
+      function play() {
+        ctx.clearRect(0, 0, 1000, 1000);
+        balls.forEach((el) => {
+          el.draw(ctx);
+          el.move();
+        });
+        requestAnimationFrame(play);
+      }
+      requestAnimationFrame(play);
     </script>
   </body>
 </html>
