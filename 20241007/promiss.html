@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const users = [
+        { id: 1, name: "재현" },
+        { id: 2, name: "호준" },
+        { id: 3, name: "원범" },
+      ];
+
+      const userAddresses = [
+        { id: 1, address: "Deongneung-ro 10-gil" },
+        { id: 2, address: "Inda 1-gil" },
+        { id: 3, address: "58, Banpo-daero, Seocho-gu" },
+      ];
+
+      const getUsers = () => {
+        return new Promise((resolve) => {
+          resolve(users);
+        });
+      };
+
+      const getUserAddresses = () => {
+        return new Promise((resolve) => {
+          resolve(userAddresses);
+        });
+      };
+
+      async function concatObj() {
+        try {
+          const users = await getUsers();
+          const user_addresses = await getUserAddresses();
+
+          const addressMap = user_addresses.reduce((map, obj) => {
+            map.set(obj.id, obj.address);
+            return map;
+          }, new Map());
+
+          return users.map((user) => {
+            if (addressMap.has(user.id)) {
+              const address = addressMap.get(user.id);
+              return { ...user, address };
+            }
+          });
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      concatObj().then((result) => {
+        const concatUser = result;
+        console.log(concatUser);
+      });
+    </script>
+  </body>
+</html>
