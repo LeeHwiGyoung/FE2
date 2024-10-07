@@ -37,17 +37,16 @@
             getUsers(),
             getUserAddresses(),
           ]);
-          /* const users = await getUsers();
-          const user_addresses = await getUserAddresses(); */
-          const address_map = user_addresses.reduce((map, obj) => {
-            map.set(obj.id, obj.address);
+
+          const mapping_Map = user_addresses.reduce((map, obj) => {
+            map.set(obj.id, obj);
             return map;
           }, new Map());
 
           return users.map((user) => {
-            if (address_map.has(user.id)) {
-              const address = address_map.get(user.id);
-              return { ...user, address };
+            if (mapping_Map.has(user.id)) {
+              const target = mapping_Map.get(user.id);
+              return { ...user, ...target };
             }
           });
         } catch (error) {
@@ -55,10 +54,8 @@
         }
       }
 
-      let concatUser;
       concatObj().then((result) => {
-        concatUser = result;
-        console.log(concatUser);
+        console.log(result);
       });
     </script>
   </body>

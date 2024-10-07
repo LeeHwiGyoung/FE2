@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function compareEqual(a, b) {
+        let result = true;
+        if (
+          //객체이면서 null 이 아니면
+          typeof a === "object" &&
+          typeof b === "object" &&
+          a !== null &&
+          b !== null
+        ) {
+          if (Array.isArray(a) & Array.isArray(b)) {
+            // 두 객체가 둘 다 배열이라면 true ture인 경우에만 true 리턴
+            const filterArray = a.filter((el, idx) => el === b[idx]);
+            filterArray.length === a.length
+              ? (result = true)
+              : (result = false); //일치하면
+            return result;
+          } else if (!Array.isArray(a) & !Array.isArray(b)) {
+            //두 객체가 둘 다 배열이 아니면 !False !False 인 경우에
+            // 두 객체가 둘 다 object라면
+            const key_1 = Object.keys(a); //객체의 length 비교를 위해
+            const key_2 = Object.keys(b);
+            if (key_1.length !== key_2.length) {
+              //length 가 다르면 다른 객체 하나의 property가 많거나 적음
+              result = false;
+              return result;
+            }
+
+            for (const key of key_1) {
+              //key로 객체를 순회
+              if (!compareEqual(a[key], b[key])) {
+                //객체의 value값이 객체인 경우를 체크하기 위해 재귀적으로 호출
+                //다른 값이 하나라도 있다면
+                result = false;
+                return result;
+              }
+            }
+            return result; //result의 초기 값이 true로 셋팅 되어 있음
+          } else {
+            //하나는 객체 , 하나는 배열인 경우
+            result = false;
+            return result;
+          }
+        } else {
+          //원시 타입이거나 null 인 경우
+          a === b ? (result = true) : (result = false);
+          return result;
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)http://127.0.0.1:5501/20241007/compare.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function compare(a, b) {
+        let result = true;
+        if (
+          //객체이면서 null 이 아니면
+          typeof a === "object" &&
+          typeof b === "object" &&
+          a !== null &&
+          b !== null
+        ) {
+          if (Array.isArray(a) & Array.isArray(b)) {
+            // 두 객체가 둘 다 배열이라면 true ture인 경우에만 true 리턴
+            const filterArray = a.filter((el, idx) => el === b[idx]);
+            filterArray.length === a.length
+              ? (result = true)
+              : (result = false); //일치하면
+            return result;
+          } else if (!Array.isArray(a) & !Array.isArray(b)) {
+            //두 객체가 둘 다 배열이 아니면 !False !False 인 경우에
+            // 두 객체가 둘 다 object라면
+            const key_1 = Object.keys(a); //객체의 length 비교를 위해
+            const key_2 = Object.keys(b);
+            if (key_1.length !== key_2.length) {
+              //length 가 다르면 다른 객체 하나의 property가 많거나 적음
+              result = false;
+              return result;
+            }
+
+            for (const key of key_1) {
+              //key로 객체를 순회
+              if (!compare(a[key], b[key])) {
+                //객체의 value값이 객체인 경우를 체크하기 위해 재귀적으로 호출
+                //다른 값이 하나라도 있다면
+                result = false;
+                return result;
+              }
+            }
+            return result; //result의 초기 값이 true로 셋팅 되어 있음
+          } else {
+            //하나는 객체 , 하나는 배열인 경우
+            result = false;
+            return result;
+          }
+        } else {
+          //원시 타입이거나 null 인 경우
+          console.log("in 원시 타입", a, b);
+          a === b ? (result = true) : (result = false);
+          return result;
+        }
+      }
+    </script>
+  <!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+</body></html>
