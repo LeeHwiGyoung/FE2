@@ -18,6 +18,11 @@
         ) {
           if (Array.isArray(a) & Array.isArray(b)) {
             // 두 객체가 둘 다 배열이라면 true ture인 경우에만 true 리턴
+            if (a.length !== b.length) {
+              //길이가 다르면
+              result = false;
+              return result;
+            }
             const filterArray = a.filter((el, idx) => el === b[idx]);
             filterArray.length === a.length
               ? (result = true)
