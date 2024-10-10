@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // __proto__
+      // __proto__
+
+      // 자바스크립트 믹스인
+      const sayHiMixin = {
+        sayHi() {
+          console.log("hi!!");
+        },
+        sayBye() {
+          console.log("bye bye!!");
+        },
+      };
+
+      class SuperUser {
+        canWalk() {
+          console.log("걷는다...");
+        }
+      }
+
+      class User extends SuperUser {
+        constructor(name) {
+          super();
+          this.name = name;
+        }
+
+        canTalk() {
+          console.log("불라블라블라...");
+        }
+      }
+
+      Object.assign(User.prototype, sayHiMixin);
+
+      const user = new User("휘경");
+    </script>
+  </body>
+</html>
