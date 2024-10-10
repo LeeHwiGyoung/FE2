@@ -1,0 +1,50 @@
+// 문제: 컬럼 수와 브레이크포인트를 매개변수로 받아 반응형 그리드 시스템을 생성하는 믹스인을 만드세요.
+/*
+@mixin responsive-grid($columns: 12, $breakpoints: (sm: 576px, md: 768px, lg: 992px, xl: 1200px)) {}
+*/
+
+/* @function returnPX ($breakpoints) {
+    @if ($breakpoints == sm) {
+        @return 576px;
+    } @else if ($breakpoints == md) {
+        @return 768px;
+    } @else if ($breakpoints == lg) {
+        @return 992px;
+    } @else if ($breakpoints == xl) {
+        @return 1200px;
+    } @else {
+        @return null;
+    }
+}
+@mixin responsive-grid($columns , $breakpoints) {
+    $breakPX : returnPX($breakpoints);
+    
+    @media screen and (min-width : $breakPX) {
+        display: grid;
+        grid-template-columns: repeat($columns, calc($breakPX / $columns) );
+        @content
+    }
+}
+
+ */
+@mixin responsive-grid($columns: 12, $breakpoints: (sm: 576px, md: 768px, lg: 992px, xl: 1200px)) {
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    @each $breakpoints, $vWidth in $breakpoints {
+        @media (min-width: $vWidth) {
+            @for $i from 1 through $columns {
+                .col-#{$breakpoints}-#{$i} {
+                    width: percentage(1/$columns) * $i;
+                }
+            }
+        }
+    }
+}
+
+col-sm-12 {
+    @include responsive-grid(12, sm);
+}
