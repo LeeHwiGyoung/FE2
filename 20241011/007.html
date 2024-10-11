@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let accessToken = "";
+      let refreshToken = "";
+      const api_num = 49;
+      const BASE_URL = "https://eduapi.weniv.co.kr";
+      const headers = { "Content-Type": "application/json" };
+      const userdata = {
+        username: "test123",
+        password: "test1234",
+      };
+
+      async function postFetch(target_url, headers, data) {
+        try {
+          const response = await fetch(`${BASE_URL}/${target_url}`, {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify(data),
+          });
+          const json = await response.json();
+          console.log(json);
+          return json;
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      async function login_confirm(accessToken) {
+        try {
+          const response = await fetch(`${BASE_URL}/login_confirm`, {
+            method: "POST",
+            headers: { Authorization: `Bearer ${accessToken}` },
+          });
+          const json = await response.json();
+          console.log(json);
+          return json;
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      // 블로그 생성 fetch를 이용한 POST 요청
+      /* fetch("https://eduapi.weniv.co.kr/1/blog", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: "test",
+          content: "test",
+        }),
+      })
+        .then((response) => response.json())
+        .then((json) => console.log(json))
+        .catch((error) => console.error(error)); */
+
+      // 블로그 수정 fetch를 이용한 PUT 요청
+      /* fetch('https://eduapi.weniv.co.kr/1/blog/1', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            title: 'test put',
+            content: 'test put',
+        }),
+    })
+        .then(response => response.json())
+        .then(json => console.log(json))
+        .catch(error => console.error(error)); */
+
+      /*        // 블로그 삭제 fetch를 이용한 DELETE 요청
+fetch('https://eduapi.weniv.co.kr/1/blog/1', {
+    method: 'DELETE',
+})
+    .then(response => response.json())
+    .then(json => console.log(json))
+    .catch(error => console.error(error)); */
+      //postFetch(`${api_num}/signup`, headers, userdata);
+      (async function () {
+        /* await postFetch(`${api_num}/login`, headers, userdata).then((res) => {
+          localStorage.setItem("accessToken", res.access_token);
+          localStorage.setItem("refreshToken", res.refresh_token);
+        });
+        accessToken = localStorage.getItem("accessToken");
+        refreshToken = localStorage.getItem("refreshToken");
+        await login_confirm(accessToken);
+        */
+      })();
+    </script>
+  </body>
+</html>
