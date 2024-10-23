@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>내 html에 리액트 1분만에 추가해보기!</h1>
+    <p>단 1분만에 설치없이 리액트를 추가할 수 있다구요?</p>
+    <div id="root"></div>
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+      function greetingJs() {
+        const h1 = document.createElement("h1");
+        h1.classList.add("greeting");
+        h1.appendChild(document.createTextNode("hello "));
+
+        const elI = document.createElement("i");
+        elI.appendChild(document.createTextNode("재현"));
+        h1.appendChild(elI);
+        h1.appendChild(document.createTextNode(". Welcome!"));
+
+        return h1;
+      }
+
+      function Greeting({ name }) {
+        return createElement(
+          "h1", // 첫번째 인자는 만들 요소의 종류
+          { className: "greeting" }, // 두 번째 인자는 요소의 프로퍼티
+          "Hello ", // 세번째 인자 이후로는 자식요소.
+          createElement("i", null, name),
+          ". Welcome!"
+        );
+      }
+
+      function GreetingJSX() {
+        return (
+          <h1 class="greeting">
+            Hello <i>휘경</i>. Welcome!
+          </h1>
+        );
+      }
+    </script>
+  </body>
+</html>
