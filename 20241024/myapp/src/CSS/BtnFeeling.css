@@ -1,0 +1,9 @@
+.btn-feeling {
+    border : none;
+    width: 100%;
+    padding : 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    background-color: transparent;
+}

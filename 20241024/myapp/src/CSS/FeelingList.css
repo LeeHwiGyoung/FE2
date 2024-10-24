@@ -1,0 +1,14 @@
+.feeling-list {
+    list-style: none;
+    padding : 0;
+}
+
+.feeling-list > li {
+    margin : 20px;
+    background-color: #c4c4c4;
+}
+
+.feeling-list > li.active {
+    background-color: skyblue;
+}
+
