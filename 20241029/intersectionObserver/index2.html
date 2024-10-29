@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .root {
+        width: 100%;
+        height: 200px;
+        border: 1px solid red;
+        overflow-y: scroll;
+      }
+
+      .space {
+        width: 100%;
+        height: 200px;
+        margin: 300px auto;
+      }
+
+      .target {
+        width: 200px;
+        height: 200px;
+        background-color: saddlebrown;
+      }
+    </style>
+  </head>
+  <body id="root">
+    <div class="space"></div>
+    <div class="target"></div>
+    <script>
+      const root = document.querySelector("#root");
+      const target = document.querySelector(".target");
+      const options = {
+        root: root,
+        threshold: 0.5,
+      };
+      const callback = (entry) => {
+        if (entry[0].isIntersecting) {
+          entry[0].target.classList.add("intersecting");
+        } else {
+          entry[0].target.classList.remove("intersecting");
+        }
+      };
+      const observer = new IntersectionObserver(callback, options);
+      observer.observe(target);
+    </script>
+  </body>
+</html>
