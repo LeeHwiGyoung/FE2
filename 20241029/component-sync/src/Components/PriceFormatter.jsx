@@ -11,7 +11,7 @@ const currencyConfig = {
 const formatPrice = (price , currencyCode) => {
     const config = currencyConfig[currencyCode] ?? currencyConfig.USD;
 
-    return new Intl.NumberFormat(config.locale, {
+    return  Intl.NumberFormat(config.locale, {
         style: 'currency',
         currency: config.currency,
         maximumFractionDigits : 2,

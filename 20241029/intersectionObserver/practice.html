@@ -20,6 +20,14 @@
         z-index: 1000;
       }
 
+      #reading-progress {
+        height: 8px;
+        border-radius: 4px;
+        background-color: #4caf50;
+        width: 100%;
+        transition: width 0.3s ease;
+      }
+
       progress {
         width: 100%;
         height: 8px;
@@ -75,7 +83,9 @@
   </head>
   <body>
     <div id="progress-container">
-      <progress id="reading-progress" value="0" max="100"></progress>
+      <progress id="reading-progress" value="0" max="100">
+        <div id="progress-bar"></div>
+      </progress>
       <div id="progress-text">0%</div>
     </div>
 
@@ -84,43 +94,36 @@
       <h2>섹션 1: 소개</h2>
       <div class="content">첫 번째 섹션입니다. 스크롤해서 읽어보세요!</div>
     </div>
-
     <div class="section" data-section-id="2">
       <span class="section-status">읽지 않음</span>
       <h2>섹션 2: 본문</h2>
       <div class="content">두 번째 섹션입니다.</div>
     </div>
-
     <div class="section" data-section-id="3">
       <span class="section-status">읽지 않음</span>
       <h2>섹션 3: 설명</h2>
       <div class="content">세 번째 섹션입니다.</div>
     </div>
-
     <div class="section" data-section-id="4">
       <span class="section-status">읽지 않음</span>
       <h2>섹션 4: 웹 개발 기초</h2>
       <div class="content">HTML, CSS, JavaScript는 웹 개발의 기초입니다.</div>
     </div>
-
     <div class="section" data-section-id="5">
       <span class="section-status">읽지 않음</span>
       <h2>섹션 5: 프론트엔드 프레임워크</h2>
       <div class="content">React, Vue, Angular에 대해 알아보겠습니다.</div>
     </div>
-
     <div class="section" data-section-id="6">
       <span class="section-status">읽지 않음</span>
       <h2>섹션 6: 웹 성능 최적화</h2>
       <div class="content">성능 최적화는 사용자 경험의 핵심입니다.</div>
     </div>
-
     <div class="section" data-section-id="7">
       <span class="section-status">읽지 않음</span>
       <h2>섹션 7: 반응형 디자인</h2>
       <div class="content">모든 디바이스에서 완벽한 경험을 제공하세요.</div>
     </div>
-
     <div class="section" data-section-id="8">
       <span class="section-status">읽지 않음</span>
       <h2>섹션 8: 웹 접근성</h2>
@@ -130,16 +133,17 @@
       const readSections = new Set();
       const progressBar = document.querySelector("#reading-progress");
       const progressTxt = document.querySelector("#progress-text");
-      const section = document.querySelectorAll(".section");
-
+      const sections = document.querySelectorAll(".section");
+      const bar = document.querySelector("#progress-bar");
       const updateProgessBar = () => {
-        const progressRatio = (readSections.size / section.length) * 100;
+        const progressRatio = (readSections.size / sections.length) * 100;
+        bar.style.width = progressRatio + "%"; // 너비 업데이트
         progressBar.value = progressRatio;
-        progressTxt.textContent = progressRatio + "%";
+        progressTxt.textContent = Math.floor(progressRatio) + "%";
       };
 
       const options = {
-        threshold: 0.2,
+        threshold: 0.7,
       };
 
       const callback = (entries) => {
@@ -154,8 +158,9 @@
           }
         });
       };
+
       const observer = new IntersectionObserver(callback, options);
-      section.forEach((target) => observer.observe(target));
+      sections.forEach((target) => observer.observe(target));
     </script>
   </body>
 </html>
