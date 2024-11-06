@@ -31,9 +31,11 @@
             <input placeholder="00" max="59" type="text" name="sec" id="sec" />
           </div>
         </section>
-        <button class="btn-start" type="button">start</button>
-        <button class="btn-pause" type="button">pause</button>
-        <button class="btn-reset" type="button">reset</button>
+        <section class="btn-container">
+          <button class="btn-start" type="button">start</button>
+          <button class="btn-pause" type="button">pause</button>
+          <button class="btn-reset" type="button">reset</button>
+        </section>
       </article>
       <footer>
         <p>@WENIV CORP</p>
@@ -70,16 +72,6 @@
         inputSec.readOnly = false;
       }
 
-      function resetTimer() {
-        timerReadOnlyCancle();
-        clearInterval(timerId);
-        inputHour.value = "";
-        inputMin.value = "";
-        inputSec.value = "";
-        totaltime = 0;
-        timerId = null;
-      }
-
       function getHour() {
         return parseInt(inputHour.value) || 0; //NaN 은 Falsy
       }
@@ -105,11 +97,25 @@
         const sec = totaltime % 60;
         inputSec.value = sec.toString().padStart(2, "0");
       }
+      function resetTimer() {
+        btnPause.classList.remove("show");
+        timerReadOnlyCancle();
+        clearInterval(timerId);
+        inputHour.value = "";
+        inputMin.value = "";
+        inputSec.value = "";
+        totaltime = 0;
+        timerId = null;
+      }
+
       function startTimer() {
         if (timerId !== null) {
           return;
         }
-
+        if (totaltime === 0) {
+          return;
+        }
+        btnPause.classList.add("show");
         totaltime = getHour() * 3600 + getMin() * 60 + getSec();
         timerId = setInterval(() => {
           if (totaltime === 0) {
