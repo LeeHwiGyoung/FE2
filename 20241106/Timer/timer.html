@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="timer.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="root">
+      <header>
+        <h1>
+          <a href="#"><img src="./image/logo.png" alt="weniv" /></a>
+        </h1>
+      </header>
+      <article class="timer-container">
+        <h2>TIMER</h2>
+        <section class="timer-time-container">
+          <h3 class="sr-only">타이머 시간 입력</h3>
+          <div class="timer-input-wrap">
+            <label for="hour">HRS</label>
+            <input placeholder="00" type="text" name="hour" id="hour" />
+          </div>
+          <div class="timer-input-wrap">
+            <label for="min">MIN</label>
+            <input placeholder="00" max="59" type="text" name="min" id="min" />
+          </div>
+          <div class="timer-input-wrap">
+            <label for="sec">SEC</label>
+            <input placeholder="00" max="59" type="text" name="sec" id="sec" />
+          </div>
+        </section>
+        <button class="btn-start" type="button">start</button>
+        <button class="btn-pause" type="button">pause</button>
+        <button class="btn-reset" type="button">reset</button>
+      </article>
+      <footer>
+        <p>@WENIV CORP</p>
+      </footer>
+    </section>
+    <script>
+      /*
+          1. 시간/분/초 입력할 수 있습니다.
+          2. Start를 누르면 타이머가 1초 단위로 감소합니다.
+          3. Pause를 누르면 타이머가 멈춥니다.
+          4. 다시 Start를 누르면 재시작됩니다.
+          5. 0초가 되면 초기화 됩니다.
+          6. Reset을 누르면 초기화 됩니다
+      */
+      const timerContainer = document.querySelector(".timer-container");
+      const inputHour = timerContainer.querySelector("#hour");
+      const inputMin = timerContainer.querySelector("#min");
+      const inputSec = timerContainer.querySelector("#sec");
+      const btnStart = timerContainer.querySelector(".btn-start");
+      const btnPause = timerContainer.querySelector(".btn-pause");
+      const btnReset = timerContainer.querySelector(".btn-reset");
+      let totaltime = 0;
+      let timerId = null;
+
+      function timerReadOnly() {
+        inputHour.readOnly = true;
+        inputMin.readOnly = true;
+        inputSec.readOnly = true;
+      }
+
+      function timerReadOnlyCancle() {
+        inputHour.readOnly = false;
+        inputMin.readOnly = false;
+        inputSec.readOnly = false;
+      }
+
+      function resetTimer() {
+        timerReadOnlyCancle();
+        clearInterval(timerId);
+        inputHour.value = "";
+        inputMin.value = "";
+        inputSec.value = "";
+        totaltime = 0;
+        timerId = null;
+      }
+
+      function getHour() {
+        return parseInt(inputHour.value) || 0; //NaN 은 Falsy
+      }
+
+      function getMin() {
+        return parseInt(inputMin.value) || 0;
+      }
+      function getSec() {
+        return parseInt(inputSec.value) || 0;
+      }
+
+      function setHour(totaltime) {
+        const hour = Math.trunc(totaltime / 3600);
+        inputHour.value = hour.toString().padStart(2, "0");
+      }
+
+      function setMin(totaltime) {
+        const min = Math.trunc(totaltime / 60) % 60;
+        inputMin.value = min.toString().padStart(2, "0");
+      }
+
+      function setSec(totaltime) {
+        const sec = totaltime % 60;
+        inputSec.value = sec.toString().padStart(2, "0");
+      }
+      function startTimer() {
+        if (timerId !== null) {
+          return;
+        }
+
+        totaltime = getHour() * 3600 + getMin() * 60 + getSec();
+        timerId = setInterval(() => {
+          if (totaltime === 0) {
+            clearInterval(timerId);
+            resetTimer();
+            return;
+          }
+          totaltime -= 1;
+          setHour(totaltime);
+          setMin(totaltime);
+          setSec(totaltime);
+        }, 1000);
+      }
+
+      function stopTimer() {
+        timerReadOnlyCancle();
+        clearInterval(timerId);
+        timerId = null;
+      }
+
+      btnStart.addEventListener("click", startTimer);
+      btnPause.addEventListener("click", stopTimer);
+      btnReset.addEventListener("click", resetTimer);
+    </script>
+  </body>
+</html>
