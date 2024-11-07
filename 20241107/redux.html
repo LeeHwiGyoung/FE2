@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        border: 5px solid black;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .item {
+        border: 5px solid #f6866a;
+        height: 100px;
+        padding: 20px;
+        font-size: 32px;
+      }
+
+      .item:nth-child(1) {
+        font-family: "Anek Malayalam", sans-serif;
+      }
+
+      .item:nth-child(2) {
+        font-family: "Fascinate", cursive;
+      }
+
+      .item:nth-child(3) {
+        font-family: "Kdam Thmor Pro", sans-serif;
+      }
+
+      .item:nth-child(4) {
+        font-family: "Noto Sans KR", sans-serif;
+      }
+
+      .item:nth-child(5) {
+        font-family: "Open Sans", sans-serif;
+      }
+
+      .item:nth-child(6) {
+        font-family: "Roboto", sans-serif;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.0/redux.js"></script>
+  </head>
+  <body>
+    <input type="text" name="text" id="text" />
+    <button class="btn-change-text" type="button">Click Me!</button>
+    <button
+      class="btn-change-round"
+      type="button"
+      onclick="store.dispatch({type :'BORDER_RADIUS' ,borderRadius:'10px'})"
+    >
+      Rounded!
+    </button>
+    <button
+      class="btn-change-circle"
+      type="button"
+      onclick="store.dispatch({type :'BORDER_RADIUS' , borderRadius:'20px'})"
+    >
+      Circle!
+    </button>
+    <button
+      class="btn-change-rect"
+      type="button"
+      onclick="store.dispatch({type :'BORDER_RADIUS' , borderRadius:'0px'})"
+    >
+      Rect!
+    </button>
+    <button
+      class="btn-change-red"
+      type="button"
+      onclick="store.dispatch({type : 'BORDER_COLOR',  border:'5px solid red'})"
+    >
+      Red!
+    </button>
+    <button
+      class="btn-change-green"
+      type="button"
+      onclick="store.dispatch({type : 'BORDER_COLOR',  border:'5px solid green'})"
+    >
+      Green!
+    </button>
+    <button
+      class="btn-change-blue"
+      type="button"
+      onclick="store.dispatch({type : 'BORDER_COLOR',  border:'5px solid blue'})"
+    >
+      Blue!
+    </button>
+
+    <article class="container">
+      <div id="item1" class="item"></div>
+      <div id="item2" class="item"></div>
+      <div id="item3" class="item"></div>
+      <div id="item4" class="item"></div>
+      <div id="item5" class="item"></div>
+      <div id="item6" class="item"></div>
+    </article>
+
+    <script>
+      const store = Redux.createStore(reducer);
+      const items = document.querySelectorAll(".item");
+      function reducer(state, action) {
+        if (state === undefined) {
+          return {
+            text: "hello",
+            color: "black",
+            border: "5px solid #f6866a",
+            borderRadius: "0px",
+          };
+        } else if (action.type === "TEXT") {
+          return {
+            ...state,
+            text: action.text,
+          };
+        } else if (action.type === "BORDER_RADIUS") {
+          return {
+            ...state,
+            borderRadius: action.borderRadius,
+          };
+        } else if (action.type === "BORDER_COLOR") {
+          return {
+            ...state,
+            border: action.border,
+          };
+        }
+      }
+
+      function item1() {
+        const state = store.getState();
+        const $item = document.querySelector("#item1");
+        $item.innerText = `${state.text}`;
+        $item.style.borderRadius = `${state.borderRadius}`;
+        $item.style.border = `${state.border}`;
+      }
+      store.subscribe(item1);
+      item1();
+
+      function item2() {
+        const state = store.getState();
+        const $item = document.querySelector("#item2");
+        $item.innerText = `${state.text}`;
+        $item.style.borderRadius = `${state.borderRadius}`;
+      }
+      store.subscribe(item2);
+      item2();
+
+      function item3() {
+        const state = store.getState();
+        const $item = document.querySelector("#item3");
+        $item.innerText = `${state.text}`;
+        $item.style.borderRadius = `${state.borderRadius}`;
+      }
+      store.subscribe(item3);
+      item3();
+
+      function item4() {
+        const state = store.getState();
+        const $item = document.querySelector("#item4");
+        $item.innerText = `${state.text}`;
+        $item.style.borderRadius = `${state.borderRadius}`;
+      }
+      store.subscribe(item4);
+      item4();
+
+      function item5() {
+        const state = store.getState();
+        const $item = document.querySelector("#item5");
+        $item.innerText = `${state.text}`;
+        $item.style.borderRadius = `${state.borderRadius}`;
+      }
+      store.subscribe(item5);
+      item5();
+
+      function item6() {
+        const state = store.getState();
+        const $item = document.querySelector("#item6");
+        $item.innerText = `${state.text}`;
+        $item.style.borderRadius = `${state.borderRadius}`;
+      }
+      store.subscribe(item6);
+      item6();
+    </script>
+  </body>
+</html>
