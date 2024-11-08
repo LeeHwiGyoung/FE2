@@ -97,6 +97,7 @@
         const sec = totaltime % 60;
         inputSec.value = sec.toString().padStart(2, "0");
       }
+
       function resetTimer() {
         btnPause.classList.remove("show");
         timerReadOnlyCancle();
@@ -109,14 +110,22 @@
       }
 
       function startTimer() {
+        timerReadOnly();
+        
         if (timerId !== null) {
+          timerReadOnlyCancle();
           return;
         }
-        if (totaltime === 0) {
-          return;
-        }
-        btnPause.classList.add("show");
+
         totaltime = getHour() * 3600 + getMin() * 60 + getSec();
+
+        if (totaltime === 0) {
+          timerReadOnlyCancle();
+          return;
+        }
+
+        btnPause.classList.add("show");
+
         timerId = setInterval(() => {
           if (totaltime === 0) {
             clearInterval(timerId);
