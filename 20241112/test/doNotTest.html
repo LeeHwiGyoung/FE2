@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      article {
+        display: inline-block;
+        border: 3px solid black;
+        border-radius: 10px;
+        padding: 10px;
+      }
+
+      .viewer {
+        display: block;
+        font-size: 24px;
+        color: green;
+        margin: 50px 0 50px;
+        text-align: center;
+      }
+    </style>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="lib/jasmine-5.4.0/jasmine_favicon.png"
+    />
+    <link rel="stylesheet" href="lib/jasmine-5.4.0/jasmine.css" />
+
+    <script src="lib/jasmine-5.4.0/jasmine.js"></script>
+    <script src="lib/jasmine-5.4.0/jasmine-html.js"></script>
+    <script src="lib/jasmine-5.4.0/boot0.js"></script>
+    <!-- optional: include a file here that configures the Jasmine env -->
+    <script src="lib/jasmine-5.4.0/boot1.js"></script>
+  </head>
+  <body>
+    <article>
+      <strong class="viewer"> </strong>
+      <input type="text" class="inp-txt" />
+      <!-- 서로 다른 언어가 섞여 있습니다. -->
+      <button class="btn-push">적용</button>
+    </article>
+    <script src="doNotTest.js"></script>
+    <script src="doNotTest.spec.js"></script>
+  </body>
+</html>
