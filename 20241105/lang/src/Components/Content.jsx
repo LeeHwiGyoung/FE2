@@ -13,7 +13,6 @@ export default function Content() {
             <p>{content.description}</p>
         </>
     )
-    
   }
   return (
     <div>{makeContent()}</div>
