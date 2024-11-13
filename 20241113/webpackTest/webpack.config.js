@@ -1,5 +1,6 @@
 require("path");
-
+const webpack = reuqire("webpack");
+const childProcess = require("child_process");
 module.exports = {
   mode: "development",
 
@@ -20,4 +21,14 @@ module.exports = {
       },
     ],
   },
+
+  plugins: [
+    new webpack.bannerPlugin({
+      banner: `
+      Commit version : ${childProcess.execSync("git rev-parse --short HEAD")}
+      Commiter : ${childProcess.execSync("git config user.name")}
+      Commit Date : ${new Date().toLocaleString()}
+    `,
+    }),
+  ],
 };
