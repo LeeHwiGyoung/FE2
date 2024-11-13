@@ -1,5 +1,5 @@
-require("path");
-const webpack = reuqire("webpack");
+const path = require("path");
+const webpack = require("webpack");
 const childProcess = require("child_process");
 module.exports = {
   mode: "development",
@@ -17,13 +17,13 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        use: [path.resolve("/myLoader.js")],
+        use: [path.resolve("myLoader.js")],
       },
     ],
   },
 
   plugins: [
-    new webpack.bannerPlugin({
+    new webpack.BannerPlugin({
       banner: `
       Commit version : ${childProcess.execSync("git rev-parse --short HEAD")}
       Commiter : ${childProcess.execSync("git config user.name")}
