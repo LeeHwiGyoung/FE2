@@ -76,26 +76,6 @@
     }
 
     removeFavoriteAccountById(id : number) {
-        this.FavoriteAccount = this.FavoriteAccount.filter((account)=> account.id !== id );
+        this.FavoriteAccount = this.FavoriteAccount.filter((account)=> account.id !== id )
     }
- }
-
-
- const account1 = new BankAccount(1000);
-
-  account1.deposit(5000);
-  account1.printBalance();
-  account1.withDraw(3000);
-  account1.printBalance()
-  account1.deposit(1);
-  account1.printBalance();
-  account1.deposit(0);
-  account1.printBalance();
-  account1.deposit(-1)
-  account1.printBalance();
-  account1.withDraw(0);
-  account1.printBalance();
-  account1.withDraw(1);
-  account1.printBalance();
-  account1.withDraw(-1);
-  account1.printBalance();
+}
